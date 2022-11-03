@@ -15,7 +15,6 @@ class RecipeCard extends HTMLElement {
     // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
     let styleEle = document.createElement("style");
     // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
-    // FIXME: Not sure about this part
     styles = `
       * {
         font-family: sans-serif;
@@ -132,31 +131,73 @@ class RecipeCard extends HTMLElement {
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
+    let cardImg = data["imgSrc"];
+    let cardImgAlt = data["imgAlt"];
+    let titleLink = data["titleLnk"];
+    let titleText = data["titleTxt"];
+    let org = data["organization"];
+    let rating = data["rating"];
+    // FIXME: what to do with numRatings??
+    let time = data["lengthTime"];
+    let ingrList = data["ingredients"];
+
+    let rateImg;
+    let rateImgAlt;
+
+    switch (rating) {
+      case 0:
+        rateImg = "assets/images/icons/0-star.svg";
+        rateImgAlt = "0 star";
+        break;
+
+      case 1:
+        rateImg = "assets/images/icons/1-star.svg";
+        rateImgAlt = "1 star";
+        break;
+
+      case 2:
+        rateImg = "assets/images/icons/2-star.svg";
+        rateImgAlt = "2 stars";
+        break;
+
+      case 3:
+        rateImg = "assets/images/icons/3-star.svg";
+        rateImgAlt = "3 stars";
+        break;
+
+      case 4:
+        rateImg = "assets/images/icons/4-star.svg";
+        rateImgAlt = "4 star";
+        break;
+
+      case 5:
+        rateImg = "assets/images/icons/5-star.svg";
+        rateImgAlt = "5 star";
+        break;
+    
+      default:
+        rateImg = "assets/images/icons/0-star.svg";
+        rateImgAlt = "0 star";
+        break;
+    }
+    
     templateHTML = `
-      <img src="https://link-to-article.com/recipe-thumbnail.jpg"
-        alt="Recipe Title">
+      <img src="${cardImg}"
+        alt="${cardImgAlt}">
       <p class="title">
-        <a href="https://link-to-article.com">Title</a>
+        <a href="${titleLink}">${titleText}</a>
       </p>
-      <p class="organization">The Chef's Organization</p>
+      <p class="organization">${org}</p>
       <div class="rating">
-        <span>5</span>
-        <img src="/assets/images/icons/5-star.svg" alt="5 stars">
+        <span>${rating}</span>
+        <img src="${rateImg}" alt="${rateImgAlt}">
         <span>(500)</span>
       </div>
-      <time>50 min</time>
+      <time>${time}</time>
       <p class="ingredients">
-        Comma, Separated, List, of, Ingredients
+        ${ingrList}
       </p>
     `;
-
-    // FIXME: not sure if this is the correct way of reading from 'data'
-    let cardImage = document.createElement("img");
-    cardImage.src = data["imgSrc"];
-    cardImage.alt = data["imgAlt"];
-    articleInData.appendChild(cardImage); // FIXME: Append child or insert into innerHTML??
-
-    
 
     articleInData.innerHTML = templateHTML;
   }
@@ -164,3 +205,4 @@ class RecipeCard extends HTMLElement {
 
 // A8. TODO - Define the Class as a customElement so that you can create
 //           'recipe-card' elements
+customElements.define("recipe-card", RecipeCard);
