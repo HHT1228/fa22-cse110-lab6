@@ -11,11 +11,11 @@ class RecipeCard extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     // A2. TODO - Create an <article> element - This will hold our markup once our data is set
     let articleEle = document.createElement("article");
-    articleEle.setAttribute("id", "myArticle");
+    // articleEle.setAttribute("id", "currArt");
     // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
     let styleEle = document.createElement("style");
     // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
-    styles = `
+    const styles = `
       * {
         font-family: sans-serif;
         margin: 0;
@@ -126,7 +126,8 @@ class RecipeCard extends HTMLElement {
     if (!data) return;
 
     // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
-    let articleInData = document.getElementById("myArticle");
+    // let articleInData = document.getElementById("currArt");
+    let myArticle = this.shadowRoot.querySelector('article');
     // A7. TODO - Set the contents of the <article> with the <article> template given in
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
@@ -137,7 +138,7 @@ class RecipeCard extends HTMLElement {
     let titleText = data["titleTxt"];
     let org = data["organization"];
     let rating = data["rating"];
-    // FIXME: what to do with numRatings??
+    let rateNum = data["numRatings"];
     let time = data["lengthTime"];
     let ingrList = data["ingredients"];
 
@@ -180,8 +181,8 @@ class RecipeCard extends HTMLElement {
         rateImgAlt = "0 star";
         break;
     }
-    
-    templateHTML = `
+
+    let templateHTML = `
       <img src="${cardImg}"
         alt="${cardImgAlt}">
       <p class="title">
@@ -191,7 +192,7 @@ class RecipeCard extends HTMLElement {
       <div class="rating">
         <span>${rating}</span>
         <img src="${rateImg}" alt="${rateImgAlt}">
-        <span>(500)</span>
+        <span>${rateNum}</span>
       </div>
       <time>${time}</time>
       <p class="ingredients">
@@ -199,7 +200,7 @@ class RecipeCard extends HTMLElement {
       </p>
     `;
 
-    articleInData.innerHTML = templateHTML;
+    myArticle.innerHTML = templateHTML;
   }
 }
 
