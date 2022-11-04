@@ -137,7 +137,7 @@ class RecipeCard extends HTMLElement {
     let titleLink = data["titleLnk"];
     let titleText = data["titleTxt"];
     let org = data["organization"];
-    let rating = data["rating"];
+    let rate = data["rating"];
     let rateNum = data["numRatings"];
     let time = data["lengthTime"];
     let ingrList = data["ingredients"];
@@ -145,33 +145,33 @@ class RecipeCard extends HTMLElement {
     let rateImg;
     let rateImgAlt;
 
-    switch (rating) {
+    switch (rate) {
       case 0:
         rateImg = "assets/images/icons/0-star.svg";
         rateImgAlt = "0 star";
         break;
 
-      case 1:
+      case "1":
         rateImg = "assets/images/icons/1-star.svg";
         rateImgAlt = "1 star";
         break;
 
-      case 2:
+      case "2":
         rateImg = "assets/images/icons/2-star.svg";
         rateImgAlt = "2 stars";
         break;
 
-      case 3:
+      case "3":
         rateImg = "assets/images/icons/3-star.svg";
         rateImgAlt = "3 stars";
         break;
 
-      case 4:
+      case "4":
         rateImg = "assets/images/icons/4-star.svg";
         rateImgAlt = "4 star";
         break;
 
-      case 5:
+      case "5":
         rateImg = "assets/images/icons/5-star.svg";
         rateImgAlt = "5 star";
         break;
@@ -190,7 +190,7 @@ class RecipeCard extends HTMLElement {
       </p>
       <p class="organization">${org}</p>
       <div class="rating">
-        <span>${rating}</span>
+        <span>${rate}</span>
         <img src="${rateImg}" alt="${rateImgAlt}">
         <span>${rateNum}</span>
       </div>
