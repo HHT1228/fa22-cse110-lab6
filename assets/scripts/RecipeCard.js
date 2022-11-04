@@ -146,6 +146,10 @@ class RecipeCard extends HTMLElement {
     let rateImgAlt;
 
     switch (rate) {
+      case "0":
+        rateImg = "assets/images/icons/0-star.svg";
+        rateImgAlt = "0 star";
+        break;
       case 0:
         rateImg = "assets/images/icons/0-star.svg";
         rateImgAlt = "0 star";
@@ -155,8 +159,16 @@ class RecipeCard extends HTMLElement {
         rateImg = "assets/images/icons/1-star.svg";
         rateImgAlt = "1 star";
         break;
+      case 1:
+        rateImg = "assets/images/icons/1-star.svg";
+        rateImgAlt = "1 star";
+        break;
 
       case "2":
+        rateImg = "assets/images/icons/2-star.svg";
+        rateImgAlt = "2 stars";
+        break;
+      case 2:
         rateImg = "assets/images/icons/2-star.svg";
         rateImgAlt = "2 stars";
         break;
@@ -165,13 +177,25 @@ class RecipeCard extends HTMLElement {
         rateImg = "assets/images/icons/3-star.svg";
         rateImgAlt = "3 stars";
         break;
+      case 3:
+        rateImg = "assets/images/icons/3-star.svg";
+        rateImgAlt = "3 stars";
+        break;
 
       case "4":
         rateImg = "assets/images/icons/4-star.svg";
         rateImgAlt = "4 star";
         break;
+      case 4:
+        rateImg = "assets/images/icons/4-star.svg";
+        rateImgAlt = "4 star";
+        break;
 
       case "5":
+        rateImg = "assets/images/icons/5-star.svg";
+        rateImgAlt = "5 star";
+        break;
+      case 5:
         rateImg = "assets/images/icons/5-star.svg";
         rateImgAlt = "5 star";
         break;
